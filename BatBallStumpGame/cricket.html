@@ -17,13 +17,13 @@
     let computerChoice;
     if(randomNumber>0 && randomNumber<=1) {
          computerChoice = 'Bat';
-        // console.log('computerChoice is Bat');
+        
     }else if(randomNumber>1 && randomNumber<=2){
          computerChoice = 'Ball';
-        // console.log('computerChoice is Ball');
+        
     }else{
          computerChoice = 'Stump';
-        // console.log('computerChoice is Stump');
+        
     }
 
      
@@ -40,8 +40,64 @@
     alert(`You have chosen Bat. computerChoice is ${computerChoice} and ${resultMsg}`);
     
     ">Bat</button>
-    <button>Ball</button>
-    <button>Stump</button>
+
+
+    <button onclick="
+       randomNumber = Math.random()*3;
+     
+    if(randomNumber>0 && randomNumber<=1) {
+         computerChoice = 'Bat';
+       
+    }else if(randomNumber>1 && randomNumber<=2){
+         computerChoice = 'Ball';
+        
+    }else{
+         computerChoice = 'Stump';
+        
+    }
+
+     
+
+     
+    if(computerChoice === 'Ball'){
+        resultMsg =`It's a tie`;
+    }else if(computerChoice === 'Bat'){
+        resultMsg ='Computer has won';
+    }else if(computerChoice === 'Stump'){
+        resultMsg ='User won.';
+    }
+
+    alert(`You have chosen Ball. computerChoice is ${computerChoice} and ${resultMsg}`);
+    
+    ">Ball</button>
+    <button onclick="
+    randomNumber = Math.random()*3;
+  
+ if(randomNumber>0 && randomNumber<=1) {
+      computerChoice = 'Bat';
+    
+ }else if(randomNumber>1 && randomNumber<=2){
+      computerChoice = 'Ball';
+     
+ }else{
+      computerChoice = 'Stump';
+     
+ }
+
+  
+
+  
+ if(computerChoice === 'Ball'){
+     resultMsg ='Computer has won';
+ }else if(computerChoice === 'Bat'){
+     resultMsg ='User won.';
+ }else if(computerChoice === 'Stump'){
+     resultMsg =`It's a tie`;
+ }
+
+ alert(`You have chosen Stump. computerChoice is ${computerChoice} and ${resultMsg}`);
+ 
+ ">Stump</button>
     
 </body>
 </html>

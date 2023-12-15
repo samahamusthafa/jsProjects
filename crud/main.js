@@ -7,7 +7,9 @@ function addKitchenItems(){
     let kitchenInputData = kitchenInput.value;
     
     let li = document.createElement("li");
-    li.innerText = kitchenInputData;
+    let spanEl = document.createElement("span");
+    li.appendChild(spanEl);
+    spanEl.innerText = kitchenInputData;
     li.style.cssText = "animation-name: slideIn;";
     kitchenItemsList.appendChild(li);
     kitchenInput.value = '';
@@ -17,10 +19,14 @@ function addKitchenItems(){
     trashBtn.classList.add("fas","fa-trash");
     li.appendChild(trashBtn);
     console.log(trashBtn);
+
+    let editBtn = document.createElement("i");
+    editBtn.classList.add("fas","fa-edit");
+    li.appendChild(editBtn);
 }
 
 function deleteKitchenItem(event){
-    if(event.target.classList[0] === "fas"){
+    if(event.target.classList[1] === "fa-trash"){
         let item = event.target.parentElement;
         item.classList.add("slideOut");
         item.addEventListener("transitionend",function(){
@@ -29,5 +35,17 @@ function deleteKitchenItem(event){
     }
 }
 
+function editKitchenItem(event){
+    if(event.target.classList[1] === "fa-edit"){
+        let editedValue = prompt("Please add new text");
+        let item = event.target.parentElement;
+
+        let spanEl = item.querySelector("span");
+        spanEl.innerText = editedValue;
+        
+    }
+}
+
 addBtn.addEventListener("click",addKitchenItems);
 kitchenItemsList.addEventListener("click",deleteKitchenItem);
+kitchenItemsList.addEventListener("click",editKitchenItem);

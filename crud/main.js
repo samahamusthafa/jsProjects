@@ -3,24 +3,27 @@ let addBtn = document.getElementById('add-btn');
 let kitchenItemsList = document.getElementById('kitchen-items-list');
 
 let kitchenInputData;
+let kitchenInputDataArray = [];
 
 function setLocalStorage(){
-    localStorage.setItem("kitchenInput",kitchenInputData);
+    localStorage.setItem("kitchenInput",JSON.stringify(kitchenInputDataArray));
 }
 
 function getLocalStorage(){
     if(localStorage.getItem("kitchenInput")){
-        kitchenInputData = localStorage.getItem("kitchenInput");
+        kitchenInputDataArray = JSON.parse(localStorage.getItem("kitchenInput"));
         buildUI();
     }
     
 }
 
 function buildUI(){
+   kitchenItemsList.textContent = "";
+   kitchenInputDataArray.forEach((item)=>{
     let li = document.createElement("li");
     let spanEl = document.createElement("span");
     li.appendChild(spanEl);
-    spanEl.innerText = kitchenInputData;
+    spanEl.innerText = item;
     li.style.cssText = "animation-name: slideIn;";
     kitchenItemsList.appendChild(li);
     kitchenInput.value = '';
@@ -34,10 +37,12 @@ function buildUI(){
     let editBtn = document.createElement("i");
     editBtn.classList.add("fas","fa-edit");
     li.appendChild(editBtn);
+   })
 }
 
 function addKitchenItems(){
     kitchenInputData = kitchenInput.value;
+    kitchenInputDataArray.push(kitchenInputData);
     
     setLocalStorage();
     getLocalStorage();
